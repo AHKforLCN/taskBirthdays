@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="container ml-auto pt-5" style="width: 50%;">
+    <p class="text-center fs-2">Список ближайших дней рождений</p>
     <table class="table border-dark table-bordered table-hover align-middle">
     <tr>
       <th>№</th>
@@ -21,16 +22,19 @@
     </tr>
   </table>
     <div class="container-fluid row">
-    <div class="col-4">
-      <button type="button" class="btn btn-outline-dark w-100">Весь список</button>
+      <div class="col-3">
+        <a class="btn btn-outline-dark w-100" href="/all">Полный список</a>
+      </div>
+      <div class="col-3">
+        <a class="btn btn-outline-dark w-100" href="/add">Добавить</a>
+      </div>
+      <div class="col-3">
+        <a class="btn btn-outline-dark w-100" href="/view">Просмотр по ID</a>
+      </div>
+      <div class="col-3">
+        <a class="btn btn-outline-dark w-100" href="/delete">Удалить по ID</a>
+      </div>
     </div>
-    <div class="col-4">
-      <a class="btn btn-outline-dark w-100" href="/add">Добавить</a>
-    </div>
-    <div class="col-4">
-      <button type="button" class="btn btn-outline-dark w-100">Просмотр по ID</button>
-    </div>
-  </div>
   </div>
 </body>
 </html>

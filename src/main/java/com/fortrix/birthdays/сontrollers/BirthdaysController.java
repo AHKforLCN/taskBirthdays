@@ -28,21 +28,16 @@ public class BirthdaysController {
     Iterator<Birthdays> birthdaysIter = birthdays.iterator();
     ArrayList<Birthdays> res = new ArrayList<>();
 
-    while(birthdaysIter.hasNext()) { // выполняется 1 раз
+    do {
       Birthdays item = birthdaysIter.next();
       String str = item.getDateBirthday();
       String[] resStr = str.split("\\.");
       int resMonth = Integer.parseInt(resStr[1]);
       int resDay = Integer.parseInt(resStr[0]);
-      System.out.println(day + "." + month);
-      if (resMonth == month & (resDay - day <= 2 & resDay - day >= 0)) {
+      if ((resMonth == month & (resDay - day <= 2 & resDay - day >= 0)) || (resMonth - month == 1 & (resDay - day >= 27)))
         res.add(item);
-        birthdaysIter.next();
-      }
+    } while(birthdaysIter.hasNext());
 
-    }
-
-    System.out.println(res);
     model.addAttribute("birthdays", res);
     return "main";
   }
@@ -67,6 +62,32 @@ public class BirthdaysController {
   public String all(Model model) {
     Iterable<Birthdays> birthdays = birthdaysRepository.findAll();
     model.addAttribute("birthdays", birthdays);
-    return "add";
+    return "all";
+  }
+
+  @GetMapping("/view")
+  public String view(Model model) {
+    Iterable<Birthdays> birthdays = birthdaysRepository.findAll();
+    model.addAttribute("birthdays", birthdays);
+    return "view";
+  }
+
+  @PostMapping("/view")
+  public String postView(@RequestParam(value = "id", required = false) Integer intID, Model model) {
+
+    return "redirect:/";
+  }
+
+  @GetMapping("/delete")
+  public String delete(Model model) {
+    Iterable<Birthdays> birthdays = birthdaysRepository.findAll();
+    model.addAttribute("birthdays", birthdays);
+    return "delete";
+  }
+
+  @PostMapping("/delete")
+  public String postDelete(@RequestParam(value = "id", required = false) Integer intID,  Model model) {
+
+    return "redirect:/";
   }
 }
