@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Редактировать</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+<p class="text-center fs-2 mt-5">Редактирование записи</p>
+  <div th:each="el : ${birthdays}" class="container ml-auto border border-secondary rounded" style="width: 35%;">
+    <form class="p-3" method="post">
+      <div class="mb-3">
+        <label class="form-label">Фамилия Имя Отчество</label>
+        <input type="text" name="fullName" class="form-control" th:value="${el.fullName}"/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Дата рождения</label>
+        <input type="text" name="dateBirthday" class="form-control" th:value="${el.dateBirthday}"/>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Загрузка файла</label>
+        <input type="file" name="file" class="form-control" placeholder="Загрузить файл"/>
+      </div>
+
+      <div class="btn-group">
+        <button type="submit" class="btn btn-outline-success">Обновить</button>
+        <a href="/" class="btn btn-outline-danger">Назад</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
